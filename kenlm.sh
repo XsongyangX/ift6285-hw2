@@ -7,14 +7,22 @@ SIZE_OUTPUT='size.csv'
 PERFORMANCE_OUTPUT='performance.csv'
 
 # clean csv files
-rm $TIME_OUTPUT $SIZE_OUTPUT $PERFORMANCE_OUTPUT
+> $TIME_OUTPUT 
+> $SIZE_OUTPUT 
+> $PERFORMANCE_OUTPUT
+
 # remove models
-rm bigram bigram.arpa
+if [ -f bigram ] || [ -f bigram.arpa ]; then
+    rm bigram bigram.arpa
+fi
 
 if [ $# -eq 1 ]; then
     ./train.sh $1
 elif [ $# -eq 0 ]; then
-    ./train.sh 9
+    for i in {1..9}
+    do 
+        ./train.sh $i
+    done
 else
     echo "usage: ./kenlm.sh [number-of-training-slices]"
     echo "if no arguments are given, the default slice count is 9"
