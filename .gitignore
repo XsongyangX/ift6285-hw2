@@ -3,3 +3,5 @@ bigram
 tmp/
 *.csv
 *.nfs*
+*.png
+*.xlsx
