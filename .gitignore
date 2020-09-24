@@ -1,5 +1,6 @@
 *.arpa
 bigram
+trigram
 tmp/
 *.csv
 *.nfs*
